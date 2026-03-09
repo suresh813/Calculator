@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Big Button Scientific Calculator</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- PWA Mobile App Support -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+
+<!-- iOS Support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Calculator">
+
+<link rel="apple-touch-icon" href="icon-192.png">
+
+</head>
+
+
+<body class="theme-high-contrast">
+
+<div class="calculator-wrapper">
+
+<main class="calculator">
+
+<header class="calculator-header">
+
+<div class="title-row">
+<h1>Big Button Calculator</h1>
+<span class="badge">Accessible • Touch-friendly</span>
+</div>
+
+<section class="display">
+<div id="history"></div>
+<div id="display">0</div>
+</section>
+
+<section class="settings">
+
+<label class="toggle">
+<input type="checkbox" id="soundToggle" checked>
+Sound
+</label>
+
+<label class="toggle">
+<input type="checkbox" id="vibrationToggle" checked>
+Vibration
+</label>
+
+<label class="toggle">
+<input type="checkbox" id="themeToggle" checked>
+High contrast
+</label>
+
+</section>
+
+</header>
+
+
+<section class="keys">
+
+<!-- scientific -->
+<button class="key operator" data-action="sqrt">√</button>
+<button class="key operator" data-action="square">x²</button>
+<button class="key operator" data-action="sin">sin</button>
+<button class="key operator" data-action="cos">cos</button>
+
+<button class="key operator" data-action="tan">tan</button>
+<button class="key operator" data-action="log">log</button>
+<button class="key operator" data-action="percent">%</button>
+<button class="key operator" data-action="pi">π</button>
+
+<!-- control -->
+<button class="key action" data-action="backspace">⌫</button>
+<button class="key action" data-action="clear-entry">C</button>
+<button class="key action" data-action="clear-all">AC</button>
+<button class="key operator" data-operator="divide">÷</button>
+
+<!-- numbers -->
+<button class="key" data-digit="7">7</button>
+<button class="key" data-digit="8">8</button>
+<button class="key" data-digit="9">9</button>
+<button class="key operator" data-operator="multiply">×</button>
+
+<button class="key" data-digit="4">4</button>
+<button class="key" data-digit="5">5</button>
+<button class="key" data-digit="6">6</button>
+<button class="key operator" data-operator="subtract">−</button>
+
+<button class="key" data-digit="1">1</button>
+<button class="key" data-digit="2">2</button>
+<button class="key" data-digit="3">3</button>
+<button class="key operator" data-operator="add">+</button>
+
+<button class="key zero" data-digit="0">0</button>
+<button class="key" data-action="decimal">.</button>
+<button class="key equals" data-action="equals">=</button>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
