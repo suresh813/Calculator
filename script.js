@@ -46,12 +46,18 @@ function playBeep() {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
 
+    // Resume context if browser suspended it (required by modern browsers)
+    if (audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
 
     osc.type = "square";
     osc.frequency.value = 900;
-    gain.gain.value = 0.05;
+    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
 
     osc.connect(gain);
     gain.connect(audioCtx.destination);
@@ -287,4 +293,5 @@ themeToggle.addEventListener("change", () => {
 updateDisplay();
 if ("serviceWorker" in navigator) {
 navigator.serviceWorker.register("service-worker.js")
+}
 }
