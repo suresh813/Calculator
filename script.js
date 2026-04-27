@@ -292,6 +292,6 @@ themeToggle.addEventListener("change", () => {
 
 updateDisplay();
 if ("serviceWorker" in navigator) {
-navigator.serviceWorker.register("service-worker.js")
+navigator.serviceWorker.register("service-Worker.js")
 }
 }
