@@ -17,6 +17,19 @@ const themeToggle = document.getElementById("themeToggle");
 
 let audioCtx;
 
+// Initialize audio context on first user interaction
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+}
+
+document.addEventListener("click", initAudio, { once: true });
+document.addEventListener("touchstart", initAudio, { once: true });
+
 
 // display
 function updateDisplay() {
@@ -45,8 +58,6 @@ function playBeep() {
     if (!audioCtx) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
-
-    // Resume context if browser suspended it (required by modern browsers)
     if (audioCtx.state === "suspended") {
       audioCtx.resume();
     }
@@ -292,6 +303,5 @@ themeToggle.addEventListener("change", () => {
 
 updateDisplay();
 if ("serviceWorker" in navigator) {
-navigator.serviceWorker.register("service-Worker.js")
-}
+navigator.serviceWorker.register("service-worker.js")
 }
