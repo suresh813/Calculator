@@ -21,6 +21,18 @@ let audioCtx;
 function updateDisplay() {
   display.textContent = currentValue;
 
+  // Dynamically shrink font size for long numbers
+  const len = currentValue.length;
+  if (len > 14) {
+    display.style.fontSize = "16px";
+  } else if (len > 11) {
+    display.style.fontSize = "20px";
+  } else if (len > 8) {
+    display.style.fontSize = "26px";
+  } else {
+    display.style.fontSize = "32px";
+  }
+
   if (previousValue && currentOperator) {
     const opSymbol = {
       add: "+",
@@ -84,6 +96,7 @@ function handleDigit(digit) {
     currentValue = digit;
     waitingForNewValue = false;
   } else {
+    if (currentValue.replace("-", "").replace(".", "").length >= 12) return;
     currentValue = currentValue === "0" ? digit : currentValue + digit;
   }
 
